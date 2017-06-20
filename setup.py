@@ -6,7 +6,7 @@ setup(
     author='Nicolas Landier',
     author_email='nicolas.landier@gmail.com',
     packages=['crawler', 'crawler.test'],
-    scripts=['bin/Crawler.py','bin/GenerateDB.py'],
+    scripts=['crawler/Crawler.py','crawler/GenerateDB.py'],
     url='https://github.com/landier/imdb-crawler',
     license='LICENSE.txt',
     description='IMDB crawler to get data to create a local movie database.',
