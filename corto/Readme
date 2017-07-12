@@ -1,0 +1,41 @@
+The aim of this script is to help visualize the information behind the top 250 and bottom 100 movie lists.It takes as input the information inside every table from the sql database and change each data into nodes and links of atom types. There are four tables: Actor, Director,Movie and Person. Each table has its own attributes: Actor has Id, Person_id, Movie_id and CharacterName. Director has Id, Person_id and Movie_id. Movie has Id, Title, ImdbLink, ReleaseDate, Rating and Synopsis. Person has Id and Name.This script will filter out the attributes from each table which are related to specific movie and then display it on the atomspace visualizer.
+
+In order to run this script:
+
+1. Have the sql file ready from imdb crawler
+
+2. Have opencog repository built with new Movie related nodes and links
+	First put the moviedb folder inside the ../opencog/opencog/ directory and add to the cmakelist found in the same directory the following at the bottom: 
+	ADD_SUBDIRECTORY (moviedb) 
+
+ Follow the general steps to build opencog from here https://github.com/opencog/opencog
+-Have external tools repository cloned https://github.com/opencog/external-tools
+and inside glimpse directory; 
+sudo apt-get install nodejs-legacy npm
+# From within the directory containing this file.
+npm install
+
+3. Have mysql server installed: you can follow steps from here 
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
+
+Create database, user name and password and edit the above variables from db2scm.pl script with your own ones
+
+4. Have perl installed
+ sudo apt-get update
+ sudo apt-get upgrade
+ sudo apt-get install -y perl
+ 
+5. Have tmux installed
+ sudo apt-get install tmux
+ 
+6. run the crawler.sh inside corto directory
+(before running the crawler, change the path of each directory mentioned
+ and open browser and type http://localhost:9000
+ And 
+It displays info about 5 movies at a time with 15 seconds interval 
+
+To stop the script from running go to bash window of the tmux window and type ./stop.sh
+
+p.s if you run into error "no code for module opencog" 
+-sudo gedit .guile
+put (use-modules (opencog) (opencog moviedb)) inside
